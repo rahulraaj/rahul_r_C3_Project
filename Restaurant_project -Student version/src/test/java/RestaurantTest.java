@@ -60,4 +60,11 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void calculating_order_total_should_display_sum_of_selected_items() {
+     restaurant.selectItem("Sweet corn soup");
+     restaurant.selectItem("Vegetable lasagne");
+     int orderTotal = restaurant.getOrder();
+     assertEquals(388,orderTotal);
+    }
 }
