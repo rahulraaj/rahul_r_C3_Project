@@ -4,6 +4,7 @@ import org.mockito.Mockito;
 import org.mockito.Spy;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -62,9 +63,15 @@ class RestaurantTest {
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     @Test
     public void calculating_order_total_should_display_sum_of_selected_items() {
-     restaurant.selectItem("Sweet corn soup");
-     restaurant.selectItem("Vegetable lasagne");
-     int orderTotal = restaurant.getOrder();
-     assertEquals(388,orderTotal);
+        restaurant.selectItem("Sweet corn soup");
+        restaurant.selectItem("Vegetable lasagne");
+       int orderTotal = restaurant.getOrderTotal(restaurant.getOrderItem());
+       assertEquals(388,orderTotal);
+    }
+
+    @Test
+    public void calculating_order_total_whould_display_sero_when_no_item_selected() {
+        int orderTotal = restaurant.getOrderTotal(restaurant.getOrderItem());
+        assertEquals(0,orderTotal);
     }
 }
